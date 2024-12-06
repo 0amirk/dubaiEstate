@@ -2,6 +2,7 @@ import {
   Building2,
   CheckCircle2,
   HomeIcon,
+  Puzzle,
   TrendingUp,
   Users2,
 } from "lucide-react";
@@ -18,15 +19,15 @@ export default function Home() {
     },
     {
       icon: <TrendingUp className="w-12 h-12 text-primary" />,
-      title: "Investment Advisory",
+      title: "Investment Consulting",
       description:
-        "Comprehensive market analysis and investment strategies to maximize your returns.",
+        "Market insights and economic trends to maximize growth and secure lasting wealth.",
     },
     {
       icon: <Building2 className="w-12 h-12 text-primary" />,
-      title: "Builder Partnerships",
+      title: "Property Management",
       description:
-        "Access to exclusive properties from reputed builders at preferential terms.",
+        "Hassle-free management of your investments, from maintenance to tenant services.",
     },
   ];
 
@@ -35,18 +36,19 @@ export default function Home() {
       icon: <Users2 className="w-8 h-8 text-primary" />,
       title: "Expert Team",
       description:
-        "Our team of seasoned professionals brings years of real estate expertise.",
+        "Over a decade of industry experience across UAE and India. In-depth knowledge of market trends ensures informed, profitable decisions.",
     },
     {
       icon: <CheckCircle2 className="w-8 h-8 text-primary" />,
-      title: "Trusted Partners",
+      title: "Trust & Transparency",
       description:
-        "We work with only the most reputable builders and developers.",
+        "Long-term partnerships built on integrity and shared success. Clear communication at every step of your real estate journey.",
     },
     {
-      icon: <TrendingUp className="w-8 h-8 text-primary" />,
-      title: "Market Insights",
-      description: "Stay ahead with our in-depth market research and analysis.",
+      icon: <Puzzle className="w-8 h-8 text-primary" />,
+      title: "Tailored Solutions",
+      description:
+        "A client-centric approach designed to exceed expectations. Personalized strategies for wealth growth and lifestyle enhancement.",
     },
   ];
 
@@ -62,15 +64,17 @@ export default function Home() {
           priority
         />
         <div className="absolute inset-0 bg-black/50" />
-        <div className="relative px-4 mx-auto text-white md:flex md:flex-col md:items-center md:justify-center max-w-7xl sm:px-6 lg:px-8">
+        <div className="relative px-4 mx-auto text-white md:flex md:flex-col md:items-center md:justify-center max-w-7xl sm:px-6 lg:px-8 md:text-center">
           <h1 className="mb-6 text-4xl font-bold md:text-6xl">
-            Your Trusted Partner in
+            Shape Lifestyles,
             <br />
-            Real Estate Investment
+            Create Legacies
           </h1>
-          <p className="max-w-2xl mb-8 text-xl md:text-2xl">
-            We help you make informed decisions in real estate investment
-            through expert consultation and market insights.
+          <p className="max-w-2xl mb-8 text-lg md:text-xl">
+            Discover a world where real estate meets opportunity. At Arabian
+            Acres Properties, we specialize in residential, commercial, and
+            investment properties, delivering end-to-end services that ensure
+            not only the security of your wealth but its steady growth.
           </p>
           <Link href="/properties">
             <button className="px-8 py-3 text-lg font-semibold text-white transition-colors rounded-lg bg-primary hover:bg-primary/90">

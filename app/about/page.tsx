@@ -1,4 +1,4 @@
-import { Award, Building, Users } from "lucide-react";
+import { Award, Building, Scale, Users } from "lucide-react";
 import Image from "next/image";
 
 export default function About() {
@@ -33,7 +33,7 @@ export default function About() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center">
+      <section className="relative h-[90vh] flex items-center">
         <Image
           src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3"
           alt="Office building"
@@ -42,11 +42,17 @@ export default function About() {
           priority
         />
         <div className="absolute inset-0 bg-black/50" />
-        <div className="relative px-4 mx-auto text-white max-w-7xl sm:px-6 lg:px-8 md:flex md:flex-col md:justify-center md:items-center">
-          <h1 className="mb-6 text-4xl font-bold md:text-6xl">About Us</h1>
+        <div className="relative px-4 mx-auto text-white md:text-center max-w-7xl sm:px-6 lg:px-8 md:flex md:flex-col md:justify-center md:items-center">
+          <h1 className="mb-12 text-4xl font-bold md:text-6xl">
+            About Arabian Acres Properties
+          </h1>
           <p className="max-w-2xl text-xl">
-            Leading the way in real estate consultation with expertise and
-            integrity.
+            With a legacy of over a decade, Arabian Acres Properties is more
+            than a real estate company. We are a trusted partner, blending
+            expertise, innovation, and a personalized approach to shape
+            lifestyles, grow wealth, and create lasting legacies. Rooted in
+            trust and driven by excellence, we transform investments into
+            unparalleled opportunities.
           </p>
         </div>
       </section>
@@ -153,22 +159,25 @@ export default function About() {
               <Award className="w-12 h-12 mb-4 text-primary" />
               <h3 className="mb-2 text-xl font-semibold">Excellence</h3>
               <p className="text-gray-600">
-                We strive for excellence in every aspect of our service.
+                We strive for unmatched quality in every service we provide,
+                ensuring our clients receive nothing but the best.
               </p>
             </div>
             <div className="p-8 bg-white rounded-lg shadow-md">
               <Users className="w-12 h-12 mb-4 text-primary" />
               <h3 className="mb-2 text-xl font-semibold">Client First</h3>
               <p className="text-gray-600">
-                Our clients' success is our top priority.
+                We tailor every solution to align with your vision, delivering
+                personalized experiences that build trust and satisfaction.
               </p>
             </div>
             <div className="p-8 bg-white rounded-lg shadow-md">
-              <Building className="w-12 h-12 mb-4 text-primary" />
+              <Scale className="w-12 h-12 mb-4 text-primary" />
+
               <h3 className="mb-2 text-xl font-semibold">Integrity</h3>
               <p className="text-gray-600">
-                We maintain the highest standards of integrity in all our
-                dealings.
+                We build lasting relationships founded on trust, ensuring peace
+                of mind for our clients at every stage of the journey.
               </p>
             </div>
           </div>
