@@ -1,8 +1,13 @@
 import {
+  BriefcaseBusiness,
   Building2,
+  CalendarClock,
   CheckCircle2,
+  Handshake,
   HomeIcon,
+  KeySquare,
   Puzzle,
+  Stamp,
   TrendingUp,
   Users2,
 } from "lucide-react";
@@ -16,58 +21,113 @@ import { Button } from "../components/ui/moving-border";
 export default function Home() {
   const testimonials = [
     {
-      quote: "Thriving Economy",
-      name: "A rapidly growing economy with a focus on trade, tourism, and innovation.",
+      quote: "Strategic Global Hub",
+      name: "Dubai’s central location connects Asia, Europe, and Africa, making it a pivotal hub for trade and travel.",
       title:
-        "Stable governance and investor-friendly policies create a secure environment for growth.",
+        "With one of the world’s busiest airports and thriving ports, it’s perfect for global businesses and investors.",
     },
     {
-      quote: "Tax-Free Investments",
-      name: "No personal income tax or capital gains tax ensures maximum returns.",
-      title: "Favorable laws make Dubai a haven for investors worldwide.",
+      quote: "Premium Waterfront Properties",
+      name: "Home to iconic waterfront developments like Palm Jumeirah and Dubai Marina, offering unmatched luxury and views.",
+      title:
+        "A blend of serene living and modern amenities, perfect for families and investors.",
     },
+    {
+      quote: "No Taxation",
+      name: "Dubai’s tax-free income policy ensures residents and investors keep more of their earnings.",
+      title: "A key driver for global talent and investments.",
+    },
+    {
+      quote: "High Rental Yields",
+      name: "Dubai boasts some of the highest rental returns in the world, often ranging from 6-10%.",
+      title:
+        "A steady flow of expatriates and tourists ensures consistent demand.",
+    },
+    {
+      quote: "No Tax on Investment Returns",
+      name: "Keep 100% of your earnings with no taxes on property investments.",
+      title:
+        "Ideal for maximizing profitability for both short-term and long-term investors.",
+    },
+    {
+      quote: "Sustainable Housing",
+      name: "Dubai is at the forefront of eco-friendly developments, including solar-powered communities and green spaces.",
+      title:
+        "A commitment to sustainable living ensures long-term value for homeowners.",
+    },
+
     {
       quote: "World-Class Infrastructure",
-      name: "Home to iconic landmarks like Burj Khalifa and Palm Jumeirah.",
+      name: "Cutting-edge transport, healthcare, and education systems make Dubai a global leader in quality of life.",
+      title: "Iconic landmarks like Burj Khalifa and seamless urban planning.",
+    },
+    {
+      quote: "Residency Visa through Investment",
+      name: "Investors can secure long-term residency visas, offering stability and peace of mind.",
       title:
-        "Cutting-edge transport systems, healthcare, and education for a seamless lifestyle.",
+        "A major incentive for those looking to relocate or expand their business presence.",
     },
     {
-      quote: "Luxury Lifestyle",
-      name: "Renowned for its luxury real estate, fine dining, and shopping experiences.",
-      title: "A blend of modern living with cultural richness.",
-    },
-    {
-      quote: "Safe & Secure Environment",
-      name: "Low crime rates and advanced law enforcement make Dubai one of the safest cities globally.",
-      title: "An ideal place for families, professionals, and retirees.",
-    },
-    {
-      quote: "Strategic Location",
-      name: "Centrally located with easy access to Asia, Europe, and Africa.",
+      quote: "Thriving Tourism Industry",
+      name: "Dubai attracts millions of tourists annually, driving demand for short-term rentals and holiday homes.",
       title:
-        "Dubai International Airport is one of the busiest and most connected in the world.",
+        "World-class attractions ensure a robust and growing tourism economy.",
+    },
+    {
+      quote: "Innovation and Future Growth",
+      name: "Dubai is a leader in technology and innovation, with initiatives like Smart Dubai shaping a futuristic city.",
+      title:
+        "Investment opportunities abound in emerging industries and technologies.",
+    },
+    {
+      quote: "0% Capital Gain Tax",
+      name: "Investors enjoy complete exemption from capital gains tax, ensuring higher profitability.",
+      title: "Ideal for both local and international property investors.",
+    },
+    {
+      quote: "Off-Plan Investment",
+      name: "Gain early access to premium developments with flexible payment plans and competitive pricing.",
+      title:
+        "A high-potential strategy for maximizing returns as property values appreciate.",
     },
   ];
 
   const services = [
     {
-      icon: <HomeIcon className="w-12 h-12 text-primary" />,
-      title: "Property Selection",
+      icon: <CalendarClock className="w-12 h-12 text-primary" />,
+      title: "Flexi/Fixed Rentals",
       description:
-        "Expert guidance in choosing the right property based on your investment goals and preferences.",
+        "Flexible and fixed rental solutions tailored to suit your lifestyle and investment needs.",
     },
     {
-      icon: <TrendingUp className="w-12 h-12 text-primary" />,
-      title: "Investment Consulting",
+      icon: <BriefcaseBusiness className="w-12 h-12 text-primary" />,
+      title: "Company Setup Assistance Ensuring Best ROI",
       description:
-        "Market insights and economic trends to maximize growth and secure lasting wealth.",
+        "End-to-end support for setting up your business in Dubai with strategies to maximize returns.",
     },
     {
       icon: <Building2 className="w-12 h-12 text-primary" />,
       title: "Property Management",
       description:
-        "Hassle-free management of your investments, from maintenance to tenant services.",
+        "Comprehensive management services to maintain and enhance the value of your property.",
+    },
+    {
+      icon: <Stamp className="w-12 h-12 text-primary" />,
+      title: "Golden & Residential Visa Assistance",
+      description:
+        "Streamlined support for obtaining UAE’s Golden or Residential Visa through property investments.",
+    },
+    {
+      icon: <KeySquare className="w-12 h-12 text-primary" />,
+      title: "Leasing",
+      description:
+        "Hassle-free leasing services ensuring maximum occupancy and consistent rental income.",
+    },
+    {
+      icon: <Handshake className="w-12 h-12 text-primary" />,
+      title: "Finance & Mortgage Assistance",
+      description:
+        "Market insights and economic trends to maximize growth and secure lasting wealth.",
     },
   ];
 

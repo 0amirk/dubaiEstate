@@ -1,6 +1,6 @@
 import { Award, Building, Scale, Users } from "lucide-react";
 import Image from "next/image";
-
+import aboutUs from "../../lib/aboutUs.jpg";
 export default function About() {
   const stats = [
     { number: "10+", label: "Years Experience" },
@@ -35,7 +35,7 @@ export default function About() {
       {/* Hero Section */}
       <section className="relative h-[90vh] flex items-center">
         <Image
-          src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3"
+          src={aboutUs}
           alt="Office building"
           fill
           className="object-cover"
