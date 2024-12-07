@@ -8,7 +8,7 @@ import FloatingChat from "@/components/chat/FloatingChat";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "RealtyPro - Your Real Estate Investment Partner",
+  title: "Arabian Acres",
   description:
     "Professional real estate consultation services to help you make informed investment decisions.",
 };
