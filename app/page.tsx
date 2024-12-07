@@ -8,8 +8,47 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import heroImg from "../lib/hero.jpg";
+import React, { useEffect, useState } from "react";
+import { InfiniteMovingCards } from "../components/ui/infinite-moving-cards";
 
 export default function Home() {
+  const testimonials = [
+    {
+      quote: "Thriving Economy",
+      name: "A rapidly growing economy with a focus on trade, tourism, and innovation.",
+      title:
+        "Stable governance and investor-friendly policies create a secure environment for growth.",
+    },
+    {
+      quote: "Tax-Free Investments",
+      name: "No personal income tax or capital gains tax ensures maximum returns.",
+      title: "Favorable laws make Dubai a haven for investors worldwide.",
+    },
+    {
+      quote: "World-Class Infrastructure",
+      name: "Home to iconic landmarks like Burj Khalifa and Palm Jumeirah.",
+      title:
+        "Cutting-edge transport systems, healthcare, and education for a seamless lifestyle.",
+    },
+    {
+      quote: "Luxury Lifestyle",
+      name: "Renowned for its luxury real estate, fine dining, and shopping experiences.",
+      title: "A blend of modern living with cultural richness.",
+    },
+    {
+      quote: "Safe & Secure Environment",
+      name: "Low crime rates and advanced law enforcement make Dubai one of the safest cities globally.",
+      title: "An ideal place for families, professionals, and retirees.",
+    },
+    {
+      quote: "Strategic Location",
+      name: "Centrally located with easy access to Asia, Europe, and Africa.",
+      title:
+        "Dubai International Airport is one of the busiest and most connected in the world.",
+    },
+  ];
+
   const services = [
     {
       icon: <HomeIcon className="w-12 h-12 text-primary" />,
@@ -57,7 +96,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative h-[90vh] flex items-center">
         <Image
-          src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3"
+          src={heroImg}
           alt="Modern building"
           fill
           className="object-cover"
@@ -107,6 +146,26 @@ export default function Home() {
                 <p className="text-gray-600">{service.description}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Dubai */}
+      <section className="py-20">
+        <div className="">
+          <div className="mx-auto mb-16 text-center max-w-7xl">
+            <h2 className="mb-4 text-3xl font-bold md:text-4xl">Why Dubai</h2>
+            <p className="max-w-2xl mx-auto text-gray-600">
+              Dubai is a global hub of innovation, luxury, and opportunity,
+              offering unparalleled benefits for investors and residents alike.
+            </p>
+          </div>
+          <div className="rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
+            <InfiniteMovingCards
+              items={testimonials}
+              direction="right"
+              speed="slow"
+            />
           </div>
         </div>
       </section>
