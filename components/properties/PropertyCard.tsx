@@ -26,7 +26,7 @@ export default function PropertyCard({ property }: PropertyCardProps) {
             fill
             className="object-cover"
           />
-          <div className="absolute px-3 py-1 text-sm text-white bg-black rounded-full top-4 right-4">
+          <div className="absolute px-3 py-1 text-sm text-white bg-black rounded-full top-4 right-4 ">
             {property.status}
           </div>
         </div>

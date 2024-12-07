@@ -118,8 +118,8 @@ export default function Home() {
           </p>
           <Link href="/properties">
             <Button
-              borderRadius="1.75rem"
-              className="px-8 py-3 text-lg font-semibold text-white transition-colors bg-black rounded-lg "
+              borderRadius="0.5rem"
+              className="text-lg font-semibold text-white transition-colors bg-black rounded-lg "
             >
               View Properties
             </Button>
