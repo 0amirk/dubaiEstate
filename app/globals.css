@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -70,6 +70,47 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+} */
+
+:root {
+  --foreground-rgb: 60, 56, 54; /* Soft, warm gray for text */
+  --background-start-rgb: 245, 242, 240; /* Light beige */
+  --background-end-rgb: 255, 255, 255; /* Pure white for brightness */
+
+  --background: 30 25% 95%;
+  --foreground: 30 10% 23%;
+  --card: 30 25% 95%;
+  --card-foreground: 30 10% 23%;
+  --popover: 30 25% 95%;
+  --popover-foreground: 30 10% 23%;
+  --primary: 34 78% 60%; /* Muted peach */
+  --primary-foreground: 30 20% 95%;
+  --secondary: 50 55% 75%; /* Subtle sage green */
+  --secondary-foreground: 30 10% 23%;
+  --muted: 30 15% 90%; /* Soft ivory */
+  --muted-foreground: 30 20% 40%; /* Light gray */
+  --accent: 200 70% 80%; /* Gentle sky blue */
+  --accent-foreground: 30 10% 23%;
+  --destructive: 0 70% 65%; /* Soft coral red */
+  --destructive-foreground: 30 25% 95%;
+  --border: 30 15% 85%; /* Light border gray */
+  --input: 30 15% 85%;
+  --ring: 200 70% 75%; /* Sky blue for focus states */
+  --chart-1: 34 78% 60%; /* Peach for charts */
+  --chart-2: 50 55% 70%; /* Sage green */
+  --chart-3: 200 70% 75%; /* Sky blue */
+  --chart-4: 220 50% 65%; /* Muted aqua */
+  --chart-5: 0 60% 60%; /* Coral red */
+  --radius: 0.5rem; /* Border radius for rounded elements */
 }
 
 @layer base {

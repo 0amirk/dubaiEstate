@@ -11,6 +11,7 @@ import Link from "next/link";
 import heroImg from "../lib/hero.jpg";
 import React, { useEffect, useState } from "react";
 import { InfiniteMovingCards } from "../components/ui/infinite-moving-cards";
+import { Button } from "../components/ui/moving-border";
 
 export default function Home() {
   const testimonials = [
@@ -116,15 +117,18 @@ export default function Home() {
             not only the security of your wealth but its steady growth.
           </p>
           <Link href="/properties">
-            <button className="px-8 py-3 text-lg font-semibold text-white transition-colors rounded-lg bg-primary hover:bg-primary/90">
+            <Button
+              borderRadius="1.75rem"
+              className="px-8 py-3 text-lg font-semibold text-white transition-colors bg-black rounded-lg "
+            >
               View Properties
-            </button>
+            </Button>
           </Link>
         </div>
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 bg-gray-50">
+      <section id="services" className="py-20">
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="mb-16 text-center">
             <h2 className="mb-4 text-3xl font-bold md:text-4xl">
@@ -151,7 +155,7 @@ export default function Home() {
       </section>
 
       {/* Why Dubai */}
-      <section className="py-20">
+      <section className="py-20 bg-gray-50">
         <div className="">
           <div className="mx-auto mb-16 text-center max-w-7xl">
             <h2 className="mb-4 text-3xl font-bold md:text-4xl">Why Dubai</h2>

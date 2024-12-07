@@ -49,9 +49,9 @@ export default function FloatingChat() {
               <button
                 key={index}
                 onClick={option.action}
-                className="flex items-center p-4 transition-colors rounded-lg hover:bg-gray-100"
+                className="flex items-center p-4 transition-colors rounded-lg"
               >
-                <div className="p-2 rounded-full bg-primary/10 text-primary">
+                <div className="p-2 transition-transform transform rounded-full bg-primary/10 text-primary hover:scale-125">
                   {option.icon}
                 </div>
               </button>

@@ -15,8 +15,8 @@ export default function PropertyCard({ property }: PropertyCardProps) {
 
   return (
     <>
-      <div 
-        className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
+      <div
+        className="overflow-hidden transition-shadow bg-white rounded-lg shadow-md cursor-pointer hover:shadow-lg"
         onClick={() => setIsModalOpen(true)}
       >
         <div className="relative h-64">
@@ -26,15 +26,15 @@ export default function PropertyCard({ property }: PropertyCardProps) {
             fill
             className="object-cover"
           />
-          <div className="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm">
+          <div className="absolute px-3 py-1 text-sm text-white bg-black rounded-full top-4 right-4">
             {property.status}
           </div>
         </div>
         <div className="p-6">
-          <h3 className="text-xl font-semibold mb-2">{property.name}</h3>
-          <p className="text-gray-600 mb-2">by {property.builder}</p>
-          <p className="text-2xl font-bold text-primary mb-4">{property.price}</p>
-          
+          <h3 className="mb-2 text-xl font-semibold">{property.name}</h3>
+          <p className="mb-2 text-gray-600">by {property.builder}</p>
+          <p className="mb-4 text-2xl font-bold ">{property.price}</p>
+
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div className="flex items-center space-x-2">
               <Bed className="w-5 h-5 text-gray-400" />
@@ -53,12 +53,12 @@ export default function PropertyCard({ property }: PropertyCardProps) {
               <span>{property.type}</span>
             </div>
           </div>
-          
+
           <p className="text-gray-600 truncate">{property.location}</p>
         </div>
       </div>
 
-      <ContactFormModal 
+      <ContactFormModal
         property={property}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
