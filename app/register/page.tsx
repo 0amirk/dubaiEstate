@@ -1,4 +1,4 @@
-"use client";
+"use client"; // To mark this as a client-side component
 
 import { useState, useEffect } from "react";
 
@@ -29,7 +29,7 @@ const RegisterPage = () => {
       setIsSecretKeyValid(true);
       setErrorMessage("");
     } else {
-      setIsSecretKeyValid(true);
+      setIsSecretKeyValid(false);
     }
   }, [secretKey]);
 
@@ -48,9 +48,10 @@ const RegisterPage = () => {
 
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
-      if (data._id) {
+      if (data.token) {
         alert("Registration successful");
+      } else {
+        alert("Registration failed");
       }
     } else {
       alert("Something went wrong. Please try again.");

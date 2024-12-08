@@ -2,9 +2,24 @@
 
 import { Bed, Bath, Move, Square } from "lucide-react";
 import Image from "next/image";
-import { Property } from "@/lib/data/properties";
 import { useState } from "react";
 import ContactFormModal from "./ContactFormModal";
+
+// Define the property type based on the provided JSON
+interface Property {
+  _id: string;
+  title: string;
+  description: string;
+  price: number;
+  location: string;
+  imageUrl: string;
+  bedrooms: number;
+  bathrooms: number;
+  area: number;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
 
 interface PropertyCardProps {
   property: Property;
@@ -21,19 +36,15 @@ export default function PropertyCard({ property }: PropertyCardProps) {
       >
         <div className="relative h-64">
           <Image
-            src={property.images[0]}
-            alt={property.name}
+            src={property.imageUrl} // Make sure the image URL is valid
+            alt={property.title} // Use title for alt text
             fill
             className="object-cover"
           />
-          <div className="absolute px-3 py-1 text-sm text-white bg-black rounded-full top-4 right-4 ">
-            {property.status}
-          </div>
         </div>
         <div className="p-6">
-          <h3 className="mb-2 text-xl font-semibold">{property.name}</h3>
-          <p className="mb-2 text-gray-600">by {property.builder}</p>
-          <p className="mb-4 text-2xl font-bold ">{property.price}</p>
+          <h3 className="mb-2 text-xl font-semibold">{property.title}</h3>
+          <p className="mb-4 text-2xl font-bold">${property.price}</p>
 
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div className="flex items-center space-x-2">
@@ -46,11 +57,12 @@ export default function PropertyCard({ property }: PropertyCardProps) {
             </div>
             <div className="flex items-center space-x-2">
               <Square className="w-5 h-5 text-gray-400" />
-              <span>{property.area}</span>
+              <span>{property.area} sq ft</span>
             </div>
             <div className="flex items-center space-x-2">
               <Move className="w-5 h-5 text-gray-400" />
-              <span>{property.type}</span>
+              <span>{property.description}</span>{" "}
+              {/* You can modify the type as needed */}
             </div>
           </div>
 
@@ -59,7 +71,6 @@ export default function PropertyCard({ property }: PropertyCardProps) {
       </div>
 
       <ContactFormModal
-        property={property}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
       />

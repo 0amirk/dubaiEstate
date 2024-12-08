@@ -42,11 +42,24 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import axios from "axios";
 
+// Define the property type
+interface Property {
+  title: string;
+  description: string;
+  price: string;
+  location: string;
+  bedrooms: string;
+  bathrooms: string;
+  area: string;
+  image: File | null;
+  showForm?: boolean; // Optional to handle form visibility
+}
+
 const AdminPage = () => {
-  const { isAuthenticated, token } = useAuth(); // Ensure `token` is available from AuthContext
+  const { isAuthenticated, token } = useAuth(); // Ensure token is correctly fetched
   const [isClient, setIsClient] = useState(false);
-  const [properties, setProperties] = useState([]);
-  const [newProperty, setNewProperty] = useState({
+  const [properties, setProperties] = useState<any[]>([]); // Adjusted to any[] for simplicity
+  const [newProperty, setNewProperty] = useState<Property>({
     title: "",
     description: "",
     price: "",
@@ -65,7 +78,7 @@ const AdminPage = () => {
 
   useEffect(() => {
     if (isClient && !isAuthenticated) {
-      router.push("/");
+      router.push("/"); // Redirect to login if not authenticated
     }
   }, [isClient, isAuthenticated, router]);
 
@@ -84,22 +97,31 @@ const AdminPage = () => {
     e.preventDefault();
     const formData = new FormData();
     for (const key in newProperty) {
-      formData.append(key, newProperty[key]);
+      if (key !== "showForm") {
+        formData.append(key, newProperty[key as keyof Property] || "");
+      }
+    }
+
+    if (!token) {
+      alert("No token found. Please log in.");
+      return;
     }
 
     try {
+      // Ensure that the token is correctly passed in the headers
       const response = await axios.post(
         "https://dubai-backend-property.onrender.com/api/properties",
         formData,
         {
           headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${token}`, // Include token for authentication
+            "Content-Type": "multipart/form-data", // Correct content type for form data
+            Authorization: `Bearer ${token}`, // Use token for authentication
           },
+          withCredentials: true, // Ensure cookies are sent if needed
         }
       );
 
-      if (response.status === 200) {
+      if (response.status === 201) {
         alert("Property added successfully!");
         fetchProperties(); // Refresh properties list after adding
       }
@@ -113,6 +135,11 @@ const AdminPage = () => {
   };
 
   const fetchProperties = async () => {
+    if (!token) {
+      alert("No token found. Please log in.");
+      return;
+    }
+
     try {
       const response = await axios.get(
         "https://dubai-backend-property.onrender.com/api/properties",
@@ -120,6 +147,7 @@ const AdminPage = () => {
           headers: {
             Authorization: `Bearer ${token}`, // Include token for authentication
           },
+          withCredentials: true, // Ensure cookies are sent if needed
         }
       );
 
@@ -137,7 +165,7 @@ const AdminPage = () => {
 
   useEffect(() => {
     if (isClient && isAuthenticated) {
-      fetchProperties();
+      fetchProperties(); // Fetch properties when authenticated
     }
   }, [isClient, isAuthenticated]);
 
@@ -184,7 +212,7 @@ const AdminPage = () => {
                     : "text"
                 }
                 name={field}
-                value={newProperty[field as keyof typeof newProperty]}
+                value={newProperty[field as keyof Property]}
                 onChange={handleInputChange}
                 className="w-full px-3 py-2 border rounded-lg"
                 required

@@ -84,7 +84,7 @@ import { useAuth } from "@/context/AuthContext"; // Importing the context
 import axios from "axios"; // Importing Axios
 
 const LoginPage = () => {
-  const { setIsAuthenticated } = useAuth(); // Accessing the setIsAuthenticated function
+  const { setIsAuthenticated, setToken } = useAuth(); // Accessing the setIsAuthenticated function
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -97,36 +97,70 @@ const LoginPage = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  console.log("_____FORM DATA __________",formData);
-  
+  console.log("_____FORM DATA __________", formData);
+
+  //   const handleSubmit = async (e: React.FormEvent) => {
+  //     e.preventDefault();
+
+  //     try {
+  //       const response = await axios.post(
+  //         "https://dubai-backend-property.onrender.com/api/admin/login",
+  //         formData,
+  //         {
+  //           withCredentials: true,
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //           },
+  //         }
+  //       );
+
+  //       console.log("_____RESPONSE __________", response);
+
+  //       if (response.status === 200) {
+  //         setIsAuthenticated(true); // Set authentication state to true
+  //         router.push("/admin"); // Redirect to admin page
+  //         console.log(response);
+  //         // document.cookie = `jwt=${response.data.token}`;
+  //       } else {
+  //         alert("Invalid credentials");
+  //         router.push("/"); // Redirect to homepage on failed login
+  //       }
+  //     } catch (error) {
+  //       console.error("Login error:", error);
+  //       alert("Something went wrong. Please try again.");
+  //     }
+  //   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     try {
       const response = await axios.post(
-        'https://dubai-backend-property.onrender.com/api/admin/login',
+        "https://dubai-backend-property.onrender.com/api/admin/login",
         formData,
         {
-          withCredentials: true,
-          headers: {
-            'Content-Type': 'application/json',
-          },
+          withCredentials: true, // Ensures the cookie is included in the request
+          headers: { "Content-Type": "application/json" }, // Specify the content type
         }
       );
 
-      console.log("_____RESPONSE __________",response);
-      
+      if (response.status === 200) {
+        const data = response.data;
+        const token = data.token;
 
-      if (response.status === 200 && response.data._id) {
+        // Set JWT token in cookies (HTTPOnly cookie will be sent automatically in requests)
+        document.cookie = `jwt=${token}; path=/;`;
+
         setIsAuthenticated(true); // Set authentication state to true
+        setToken(token); // Optionally save the token in state for immediate use
+
         router.push("/admin"); // Redirect to admin page
       } else {
         alert("Invalid credentials");
         router.push("/"); // Redirect to homepage on failed login
       }
     } catch (error) {
-      console.error("Login error:", error);
+      console.error("Login failed:", error);
       alert("Something went wrong. Please try again.");
     }
   };

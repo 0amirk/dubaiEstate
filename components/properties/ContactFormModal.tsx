@@ -1,11 +1,23 @@
 "use client";
 
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Property } from "@/lib/data/properties";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
@@ -18,13 +30,11 @@ const formSchema = z.object({
 });
 
 interface ContactFormModalProps {
-  property: Property;
   isOpen: boolean;
   onClose: () => void;
 }
 
 export default function ContactFormModal({
-  property,
   isOpen,
   onClose,
 }: ContactFormModalProps) {
@@ -50,7 +60,7 @@ export default function ContactFormModal({
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Enquire About {property.name}</DialogTitle>
+          <DialogTitle className="font-semibold">Enquire</DialogTitle>
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -87,7 +97,11 @@ export default function ContactFormModal({
                 <FormItem>
                   <FormLabel>Phone Number</FormLabel>
                   <FormControl>
-                    <Input type="tel" placeholder="Your phone number" {...field} />
+                    <Input
+                      type="tel"
+                      placeholder="Your phone number"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -100,7 +114,11 @@ export default function ContactFormModal({
                 <FormItem>
                   <FormLabel>WhatsApp Number</FormLabel>
                   <FormControl>
-                    <Input type="tel" placeholder="Your WhatsApp number" {...field} />
+                    <Input
+                      type="tel"
+                      placeholder="Your WhatsApp number"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
