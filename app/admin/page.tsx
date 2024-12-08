@@ -1,40 +1,3 @@
-// "use client";
-
-// import { useEffect, useState } from "react";
-// import { useRouter } from "next/navigation";
-// import { useAuth } from "@/context/AuthContext";
-
-// const AdminPage = () => {
-//   const { isAuthenticated } = useAuth(); // Accessing authentication state
-//   const [isClient, setIsClient] = useState(false); // State to track if component is mounted on the client side
-//   const router = useRouter();
-
-//   useEffect(() => {
-//     // Set isClient to true after component mounts
-//     setIsClient(true);
-//   }, []);
-
-//   // Redirect to login page if the user is not authenticated
-//   useEffect(() => {
-//     if (isClient && !isAuthenticated) {
-//       router.push("/"); // Redirect to homepage if not authenticated
-//     }
-//   }, [isClient, isAuthenticated, router]);
-
-//   if (!isClient) {
-//     return null; // Render nothing during server-side rendering
-//   }
-
-//   return (
-//     <div className="flex items-center justify-center min-h-screen">
-//       <h1>Welcome to the Admin Panel</h1>
-//       {/* Your admin page content */}
-//     </div>
-//   );
-// };
-
-// export default AdminPage;
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -42,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import axios from "axios";
 
-// Define the property type
+// Define the property type with 'any' for flexible typing
 interface Property {
   title: string;
   description: string;
@@ -51,12 +14,12 @@ interface Property {
   bedrooms: string;
   bathrooms: string;
   area: string;
-  image: File | null;
+  image: any; // Change to 'any' to avoid errors with file types
   showForm?: boolean; // Optional to handle form visibility
 }
 
 const AdminPage = () => {
-  const { isAuthenticated, token } = useAuth(); // Ensure token is correctly fetched
+  const { isAuthenticated, token }: any = useAuth(); // 'any' to remove typing errors related to 'useAuth'
   const [isClient, setIsClient] = useState(false);
   const [properties, setProperties] = useState<any[]>([]); // Adjusted to any[] for simplicity
   const [newProperty, setNewProperty] = useState<Property>({
@@ -108,16 +71,15 @@ const AdminPage = () => {
     }
 
     try {
-      // Ensure that the token is correctly passed in the headers
       const response = await axios.post(
         "https://dubai-backend-property.onrender.com/api/properties",
         formData,
         {
           headers: {
-            "Content-Type": "multipart/form-data", // Correct content type for form data
-            Authorization: `Bearer ${token}`, // Use token for authentication
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
           },
-          withCredentials: true, // Ensure cookies are sent if needed
+          withCredentials: true,
         }
       );
 
@@ -125,7 +87,7 @@ const AdminPage = () => {
         alert("Property added successfully!");
         fetchProperties(); // Refresh properties list after adding
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error(
         "Error adding property:",
         error.response?.data || error.message
@@ -145,16 +107,16 @@ const AdminPage = () => {
         "https://dubai-backend-property.onrender.com/api/properties",
         {
           headers: {
-            Authorization: `Bearer ${token}`, // Include token for authentication
+            Authorization: `Bearer ${token}`,
           },
-          withCredentials: true, // Ensure cookies are sent if needed
+          withCredentials: true,
         }
       );
 
       if (response.status === 200) {
         setProperties(response.data);
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error(
         "Error fetching properties:",
         error.response?.data || error.message
@@ -175,7 +137,6 @@ const AdminPage = () => {
     <div className="flex flex-col items-center justify-center min-h-screen">
       <h1 className="mb-4 text-2xl font-bold">Admin Panel</h1>
 
-      {/* Add Property Button and Form */}
       <button
         onClick={() => setNewProperty({ ...newProperty, showForm: true })}
         className="w-full max-w-sm px-4 py-2 mb-4 text-white rounded bg-primary hover:opacity-80"
@@ -212,7 +173,7 @@ const AdminPage = () => {
                     : "text"
                 }
                 name={field}
-                value={newProperty[field as keyof Property]}
+                value={newProperty[field as keyof Property] || ""}
                 onChange={handleInputChange}
                 className="w-full px-3 py-2 border rounded-lg"
                 required
@@ -239,7 +200,6 @@ const AdminPage = () => {
         </form>
       )}
 
-      {/* Show Properties Button */}
       <button
         onClick={fetchProperties}
         className="w-full max-w-sm px-4 py-2 mt-4 text-white rounded bg-secondary hover:opacity-80"
@@ -247,7 +207,6 @@ const AdminPage = () => {
         Show Properties
       </button>
 
-      {/* Properties List */}
       <div className="w-full max-w-4xl mt-8">
         {properties.length > 0 ? (
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
