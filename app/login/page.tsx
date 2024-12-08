@@ -97,20 +97,26 @@ const LoginPage = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  console.log("_____FORM DATA __________",formData);
+  
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     try {
       const response = await axios.post(
-        "https://dubai-backend-property.onrender.com/api/admin/login",
+        'https://dubai-backend-property.onrender.com/api/admin/login',
         formData,
         {
-          withCredentials: true, // Include cookies in the request
+          withCredentials: true,
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
         }
       );
+
+      console.log("_____RESPONSE __________",response);
+      
 
       if (response.status === 200 && response.data._id) {
         setIsAuthenticated(true); // Set authentication state to true
