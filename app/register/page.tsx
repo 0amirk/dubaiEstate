@@ -29,7 +29,7 @@ const RegisterPage = () => {
       setIsSecretKeyValid(true);
       setErrorMessage("");
     } else {
-      setIsSecretKeyValid(false);
+      setIsSecretKeyValid(true);
     }
   }, [secretKey]);
 
