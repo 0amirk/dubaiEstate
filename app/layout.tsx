@@ -5,6 +5,8 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import FloatingChat from "@/components/chat/FloatingChat";
 
+import { AuthProvider } from "@/context/AuthContext";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -21,10 +23,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="hide-scrollbar">
       <body className={inter.className}>
-        <Navbar />
-        <main className="pt-16">{children}</main>
-        <Footer />
-        <FloatingChat />
+        <AuthProvider>
+          <Navbar />
+          <main className="pt-16">{children}</main>
+          <Footer />
+          <FloatingChat />
+        </AuthProvider>
       </body>
     </html>
   );
