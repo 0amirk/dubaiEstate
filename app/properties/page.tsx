@@ -16,7 +16,7 @@ export default function PropertiesPage() {
         setProperties(response.data);
       }
     } catch (error) {
-      alert("Error fetching properties");
+      alert("Error fetching property");
     }
   };
   useEffect(() => {

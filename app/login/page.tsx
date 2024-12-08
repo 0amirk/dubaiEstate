@@ -97,8 +97,6 @@ const LoginPage = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  console.log("_____FORM DATA __________", formData);
-
   //   const handleSubmit = async (e: React.FormEvent) => {
   //     e.preventDefault();
 
